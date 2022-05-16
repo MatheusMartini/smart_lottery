@@ -1,17 +1,22 @@
 import type { NextPage } from 'next'
-import ConnectWallet from '../components/ConnectWallet'
-import Participate from '../components/Participate'
-import About from './about'
-import Contact from './contact'
+import Head from 'next/head'
+import About from '../components/About'
+import Contact from '../components/Contact'
+import Players from '../components/Players'
 
 const Home: NextPage = () => {
   return (
     <>      
       <div>
+        <Head>
+          <title>Smart Lottery</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
         <About/>
         <Contact/>
-        
+        <Players/>
+
       </div>
     </>
   )

@@ -37,7 +37,7 @@ const Players = () => {
 
 return !contract ? null : (
     <>      
-    <div className="flex justify-center ...">
+    <div className="flex justify-center ..." id="players">
       <ul>
 
         {players?.map((p) => (

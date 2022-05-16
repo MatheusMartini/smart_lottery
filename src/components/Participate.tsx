@@ -14,7 +14,7 @@ const Participate = () => {
         });
       }}
     >
-      Fazer aposta com 0.1 ether
+      0.1 ether
     </button>
   );
 };
