@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import ConnectWallet from '../ConnectWallet'
+import Participate from '../Participate'
 
 export default function Navbar() {
   return (
@@ -21,18 +22,17 @@ export default function Navbar() {
             <li className="text-black text-center px-4 py-2 m-2">
               <p>Branch Dev</p>
             </li>
-            
+  
           </ul> 
         </div>
 
       </div>
       
       <div className="flex-auto ..."></div>
-      
         <div className='flex flex-row'>
+          <Participate/>
           <ConnectWallet/>
         </div>
-    
     </div>
     
   )
