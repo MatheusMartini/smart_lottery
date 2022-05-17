@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import ConnectWallet from '../ConnectWallet'
+import ConnectWallet from '../misc/ConnectWallet'
 import { Link as LinkScroll } from "react-scroll";
 import { useEffect, useState } from 'react';
 
@@ -16,15 +16,15 @@ export default function Navbar() {
   
   return (
     <header className={
-      "fixed top-0 w-full  z-30 bg-white-500 transition-all " +
+      "fixed top-0 w-full  z-30 bg-white-500 transition-all bg-slate-100" +
       (scrollActive ? " shadow-md pt-0" : " pt-4")
     }
   >
-    <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4">
-      <div className="col-start-1 col-end-2 flex items-center">
+    <nav className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto grid grid-flow-col py-3 sm:py-4 ">
+      <div className="col-start-1 col-end-2 flex items-center ">
         
       </div>
-        <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center">
+        <ul className="hidden lg:flex col-start-4 col-end-8 text-black-500  items-center ">
           <LinkScroll
             activeClass="active"
             to="about"
@@ -59,7 +59,7 @@ export default function Navbar() {
                 : " text-black-500 hover:text-orange-500 ")
             }
           >
-            Contact
+            Lotteries
           </LinkScroll>
           <LinkScroll
             activeClass="active"

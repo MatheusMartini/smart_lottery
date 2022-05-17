@@ -1,6 +1,6 @@
 import { useWeb3React } from "@web3-react/core";
 import { useEffect } from "react";
-import { injected } from "../utils/connectors";
+import { injected } from "../../utils/connectors";
 
 const ConnectWallet = () => {
   const { active, account, library, connector, activate, deactivate } = useWeb3React()

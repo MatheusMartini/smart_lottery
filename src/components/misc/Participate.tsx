@@ -1,5 +1,5 @@
 import { useWeb3React } from "@web3-react/core";
-import { useLottery } from "../hooks/useLottery";
+import { useLottery } from "../../hooks/useLottery";
 
 const Participate = () => {
   const web3 = useWeb3React();
