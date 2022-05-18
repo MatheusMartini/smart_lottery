@@ -3,6 +3,7 @@ import Head from 'next/head'
 import About from '../components/About'
 import Lottery from '../components/Lotteries'
 import Players from '../components/Players'
+import Tutorial from '../components/Tutorial'
 
 const Home: NextPage = () => {
   return (
@@ -14,6 +15,7 @@ const Home: NextPage = () => {
         </Head>
 
         <About/>
+        <Tutorial/>
         <Lottery/>
         <Players/>
 
