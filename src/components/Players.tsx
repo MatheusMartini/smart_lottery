@@ -8,7 +8,6 @@ const Players = () => {
   const [players, setPlayers] = useState([]);
   const {activate } = useWeb3React()
 
-
   useEffect(() => {
     const connectWalletOnPageLoad = async () => {
       if (localStorage?.getItem('isWalletConnected') === 'true') {
@@ -42,17 +41,17 @@ return !contract ? null : (
         
         <div className="flex flex-col w-full ">
       
-          {/* card dos players */}
+          {/* card players */}
           <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6 ">
             
             <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20 ">
 
-                {/* titulo */}
+                {/* title */}
               <p className="text-lg text-black-600 font-medium capitalize my-2 sm:my-7 ">
-                Players da loteria 1
+                Players Lottery 1
               </p>
 
-                {/* lista dos players */}
+                {/* list players */}
 
               <div className="h-60 overflow-y-auto ... lg:py-1 lg:px-4 ">
                 {players?.map((p) => (

@@ -4,11 +4,11 @@ import Participate from "./misc/Participate";
 
 import { useWeb3React } from "@web3-react/core";
 
-const Contact = () => {
+const Lotteries = () => {
     const {active} = useWeb3React();
     
     return (
-    <div className="bg-gradient-to-b from-white-300 to-white-500 w-full py-20"id="contact">
+    <div className="bg-gradient-to-b from-white-300 to-white-500 w-full py-20"id="lotteries">
       <div className="max-w-screen-xl  px-6 sm:px-8 lg:px-16 mx-auto flex flex-col w-full text-center justify-center">
         
         <div className="flex flex-col w-full">
@@ -16,9 +16,9 @@ const Contact = () => {
             Choose Your Lottery
           </h3>
           <p className="leading-normal w-10/12 sm:w-7/12 lg:w-6/12 mx-auto my-2 text-center">
-            Escolha uma loteria para realizar a aposta
+            Participate in blockchain sweepstakes!
           </p>
-          <p> {active ? "" : "Connect wallet primeiro"}</p>
+          <p> {active ? "" : "To use the lottery you must login first"}</p>
           
           {/* card das loterias */}
           <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6">
@@ -66,12 +66,12 @@ const Contact = () => {
               </p>
               <ul className="flex flex-col list-inside pl-6 xl:pl-0 items-start justify-start text-left text-black-500 flex-grow">
                 <li className="relative check custom-list my-2">
-                  Unlimited Bandwitch
+                  Coming soon...
                 </li>
               </ul>
               <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                 <p className="text-2xl text-black-600 text-center mb-4 ">
-                  Enter 0.3
+                  0.3 ether
                 </p>
                 
               </div>
@@ -91,12 +91,12 @@ const Contact = () => {
               </p>
               <ul className="flex flex-col list-inside pl-6 xl:pl-0 items-start justify-start text-left text-black-500 flex-grow">
                 <li className="relative check custom-list my-2">
-                  Unlimited Bandwitch
+                  Coming soon...
                 </li>
               </ul>
               <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                 <p className="text-2xl text-black-600 text-center mb-4 ">
-                  Enter 0.5
+                  0.5 ether
                 </p>
 
               </div>
@@ -111,4 +111,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Lotteries;
