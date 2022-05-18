@@ -6,7 +6,7 @@ export default function Contact({ children }) {
     <>
       <Navbar />
         <div className='flex justify-center '>
-          <div className='h-screen'>
+          <div>
             {children}
           </div>
         </div>
