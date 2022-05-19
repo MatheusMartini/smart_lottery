@@ -13,7 +13,7 @@ const Tutorial = () => {
                     </h3>
                 
                 {/* card tutorials */}
-                <div className="grid grid-flow-row sm:grid-cols-2 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6">
+                <div className="grid grid-flow-row sm:grid-flow-col   gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6">
 
                     <div className="flex flex-col border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-10">
                         {/* title tutorial */}
