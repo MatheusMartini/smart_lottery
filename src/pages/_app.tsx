@@ -9,9 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Web3ReactProvider getLibrary={getLibrary} >
-        <MainContainer>
           <Component {...pageProps} />
-        </MainContainer>
       </Web3ReactProvider>
     </>
   )
