@@ -35,10 +35,17 @@ const Players = () => {
   }, [contract]);
 
 return !contract ? null : (
-    <>      
-      <div className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto text-center justify-center" id="players">
-        
+    <>    
+      <div className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto text-center justify-center py-24" id="players">
+
         <div className="flex flex-col w-full ">
+
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-black-600 leading-relaxed">
+              Lotteries Players
+          </h3>
+            <p className="leading-normal w-10/12 sm:w-7/12 lg:w-6/12 mx-auto my-2 text-center">
+              Sweepstakes participants
+            </p>
       
           {/* card players */}
           <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6 ">

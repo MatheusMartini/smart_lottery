@@ -1,44 +1,59 @@
+import Image from "next/image";
+import logo from '../../../public/assets/Icon/logo_bull.png';
+import github from '../../../public/assets/Icon/github.svg';
 
   export default function Footer() {
     return (
       <div className="bg-slate-100 pt-10 pb-10">
         <div className="max-w-screen-xl w-full mx-auto px-6 sm:px-8 lg:px-16 grid grid-rows-6 sm:grid-rows-1 grid-flow-row sm:grid-flow-col grid-cols-3 sm:grid-cols-12 gap-4">
           <div className="row-span-2 sm:col-span-4 col-start-1 col-end-4 sm:col-end-5 flex flex-col items-start ">
-          <p>logo</p>
+
+            <div className="col-start-1 col-end-2 flex items-center ">
+              <Image src={logo} alt="logo" width={50} height={50}/>
+              <p>Smart Lottery</p>
+            </div>
+
             <p className="mb-4">
-              <strong className="font-medium">Smart Lottery</strong> a simplified lottery on the <strong>blockchain!!</strong>
+               A simplified lottery on the <strong>blockchain!!</strong>
             </p>
             <div className="flex w-full mt-2 mb-8 -mx-2">
-              <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
-              <p>midia</p>
-              </div>
-              <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
-              <p>midia </p>
-              </div>
-              <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
-                <p>midia </p>
+
+              <a href="https://github.com/MatheusMartini" target="_blank">
+                <div className="mx-2 bg-white-500 rounded-full items-center justify-center flex p-2 shadow-md">
+                  <Image src={github} alt="logo" width={32} height={32}/>
+                </div>
+              </a>
+
+              <div className=" items-center justify-center flex p-2 ">
+                <p className="text-gray-400">©2022Martini</p>
               </div>
             </div>
-            <p className="text-gray-400">©2022Martini</p>
+            
           </div>
           <div className=" row-span-2 sm:col-span-2 sm:col-start-7 sm:col-end-9 flex flex-col">
-            <p className="text-black-600 mb-4 font-medium text-lg">Product</p>
+            <p className="text-black-600 mb-4 font-medium text-lg">Codes</p>
             <ul className="text-black-500 ">
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-                link{" "}
+                <a href="https://github.com/MatheusMartini/smart_lottery" target="_blank">
+                  Smart Lottery
+                </a>
               </li>
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-                link{" "}
+                <a href="https://github.com/MatheusMartini/smart_contract_lottery" target="_blank">
+                  Smart Contract
+                </a>
               </li>
             </ul>
           </div>
           <div className="row-span-2 sm:col-span-2 sm:col-start-9 sm:col-end-11 flex flex-col">
-            <p className="text-black-600 mb-4 font-medium text-lg">Engage</p>
+            <p className="text-black-600 mb-4 font-medium text-lg">Bsc Scan</p>
             <ul className="text-black-500">            
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-                Tutorials{" "}
+                <a href="https://testnet.bscscan.com/address/0x1fdb803bce3a63d4327826b6cf2653eb5568d1e8" target="_blank">
+                  Contract TestNet
+                </a>
               </li>
-              <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
+              {/* <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
                 About Us{" "}
               </li>
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
@@ -46,14 +61,14 @@
               </li>
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
                 Terms of Service{" "}
-              </li>
+              </li> */}
             </ul>
           </div>
           <div className="row-span-2 sm:col-span-2 sm:col-start-11 sm:col-end-13 flex flex-col">
-            <p className="text-black-600 mb-4 font-medium text-lg">Earn Money</p>
+            <p className="text-black-600 mb-4 font-medium text-lg">Donations</p>
             <ul className="text-black-500">
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-                Tickets{" "}
+                Coming soon...
               </li>
             </ul>
           </div>

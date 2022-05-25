@@ -5,6 +5,7 @@ import About from '../components/About'
 import Lottery from '../components/Lotteries'
 import Players from '../components/Players'
 import Tutorial from '../components/Tutorial'
+import MainContainer from '../components/layout/MainContainer';
 
 const Home: NextPage = () => {
   return (
@@ -12,13 +13,15 @@ const Home: NextPage = () => {
       <div>
         <Head>
           <title>Smart Lottery</title>
-          <link rel="icon" href="/favicon.ico" />
+          <link rel="icon" href="/logo.ico" />
         </Head>
 
-        <About/>
-        <Tutorial/>
-        <Lottery/>
-        <Players/>
+        <MainContainer>
+          <About/>
+          <Tutorial/>
+          <Lottery/>
+          <Players/>
+        </MainContainer>
 
       </div>
     </>
