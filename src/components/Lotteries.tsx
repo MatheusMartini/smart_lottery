@@ -8,7 +8,7 @@ const Lotteries = () => {
     const {active} = useWeb3React();
     
     return (
-    <div className="bg-gradient-to-b from-white-300 to-white-500 w-full py-20"id="lotteries">
+    <div className="bg-gradient-to-b from-white-300 to-white-500 w-full py-24"id="lotteries">
       <div className="max-w-screen-xl  px-6 sm:px-8 lg:px-16 mx-auto flex flex-col w-full text-center justify-center">
         
         <div className="flex flex-col w-full">
