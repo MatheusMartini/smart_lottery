@@ -8,6 +8,9 @@ const Lotteries = () => {
     const {active} = useWeb3React();
     
     return (
+      
+      <>
+      {active ?
     <div className="bg-gradient-to-b from-white-300 to-white-500 w-full py-24"id="lotteries">
       <div className="max-w-screen-xl  px-6 sm:px-8 lg:px-16 mx-auto flex flex-col w-full text-center justify-center">
         
@@ -31,7 +34,7 @@ const Lotteries = () => {
                   width={145}
                   height={165}
                   alt="Free Plan"
-                />
+                  />
               </div>
                 {/* titulo da loteria    */}
               <p className="text-lg text-black-600 font-medium capitalize my-2 sm:my-7">
@@ -46,7 +49,7 @@ const Lotteries = () => {
                 {/* botão para chamar contrato */}
               <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                 <p className="text-2xl text-black-600 text-center mb-4 ">
-                  {active ? <Participate/> : ""}
+                  <Participate/>
                 </p>
             
               </div>
@@ -59,7 +62,7 @@ const Lotteries = () => {
                   width={145}
                   height={165}
                   alt="Standard Plan"
-                />
+                  />
               </div>
               <p className="text-lg text-black-600 font-medium capitalize my-2 sm:my-7">
                 Lottery 2{" "}
@@ -84,7 +87,7 @@ const Lotteries = () => {
                   width={145}
                   height={165}
                   alt="Premium Plan"
-                />
+                  />
               </div>
               <p className="text-lg text-black-600 font-medium capitalize my-2 sm:my-7">
                 Lottery 3{" "}
@@ -108,6 +111,8 @@ const Lotteries = () => {
 
       </div>
     </div>
+    : ""}
+  </>
   );
 };
 
