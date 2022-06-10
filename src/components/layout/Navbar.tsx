@@ -77,6 +77,7 @@ export default function Navbar() {
             Tutorials
           </LinkScroll>
           {/* lotteries */}
+          {active ? 
           <LinkScroll
             activeClass="active"
             to="lotteries"
@@ -95,6 +96,7 @@ export default function Navbar() {
           >
             Lotteries
           </LinkScroll>
+          : ""}
           {/* players */}
           {active ? 
           <LinkScroll
