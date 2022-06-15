@@ -2,10 +2,11 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import About from '../components/About'
-import Lottery from '../components/Lotteries'
+import MyLottery from '../components/Lotteries'
 import Players from '../components/Players'
-import Tutorial from '../components/Tutorial'
+import RoadMap from '../components/RoadMap'
 import MainContainer from '../components/layout/MainContainer';
+import Languages from '../components/Languages'
 
 const Home: NextPage = () => {
   return (
@@ -18,9 +19,10 @@ const Home: NextPage = () => {
 
         <MainContainer>
           <About/>
-          <Tutorial/>
-          <Lottery/>
+          <RoadMap/>
+          <MyLottery/>
           <Players/>
+          <Languages/>
         </MainContainer>
 
       </div>

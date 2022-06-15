@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Participate from "./misc/Participate";
-
+import PickWinner from "./misc/PickWinner";
 import { useWeb3React } from "@web3-react/core";
 
 const Lotteries = () => {
@@ -20,9 +20,7 @@ const Lotteries = () => {
           </h3>
           <p className="leading-normal w-10/12 sm:w-7/12 lg:w-6/12 mx-auto my-2 text-center">
             Participate in blockchain sweepstakes!
-          </p>
-          <p> {active ? "" : "To use the lottery you must login first"}</p>
-          
+          </p>          
           {/* card das loterias */}
           <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6">
 
@@ -51,7 +49,7 @@ const Lotteries = () => {
                 <p className="text-2xl text-black-600 text-center mb-4 ">
                   <Participate/>
                 </p>
-            
+                  <PickWinner/>
               </div>
             </div>
 

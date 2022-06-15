@@ -48,7 +48,7 @@ const About = ({
         </div>
       </div>
 
-      <div className="relative w-full flex">
+      <div className="relative w-full flex py-24">
         <div className="rounded-lg w-full grid grid-flow-row sm:grid-flow-row grid-cols-1 sm:grid-cols-3 py-9 divide-y-2 sm:divide-y-0 sm:divide-x-2 divide-gray-100 bg-white-500 z-10">
           {listComponents.map((listComponents, index) => (
             <div
