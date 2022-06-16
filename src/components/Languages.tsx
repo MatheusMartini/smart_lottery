@@ -38,7 +38,6 @@ const Languages = ({
         <div className='mt-4 w-full'>
           <p className='font-mono uppercase text-center font-medium text-sm text-gray-600'>Languages used for application development</p>
           <div className='flex items-center justify-center mx-auto flex-wrap'>
-            {/* <Aws className='m-12 mb-8' width={120} /> */}
             {listLanguages.map((listLanguages, index) => (
               <img key={index} src={listLanguages.icon} className="h-24 w-24 p-1"/>
             ))}
