@@ -1,8 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const Tutorial = ({
-
+const RoadMap = ({
     roadMap = [
         {
           title: `Install Plugins MetaMask`,
@@ -28,12 +27,11 @@ const Tutorial = ({
           description: `selecionar a loteria e participar`,
         },   
       ],
-    
-      featureSvg = [
-        {
-          icon: "/assets/Icon/features.svg",
-        },
-      ],
+    featureSvg = [
+      {
+        icon: "/assets/Icon/features.svg",
+      },
+    ],
 
 }) => {
   return (
@@ -69,9 +67,9 @@ const Tutorial = ({
             </ul>
           </div>
           <div className='w-full lg:w-1/2 px-8'>
-            <div className='lg:mb-12 lg:mb-0 pb-12 lg:pb-0 mt-16 lg:mt-0 mx-6 lg:mx-0'>
+            <div className='lg:mb-12 pb-12 lg:pb-0 mt-16 lg:mt-0 mx-6 lg:mx-0'>
               {featureSvg.map((item, index) => (
-                <img src={item.icon} />
+                <img key={index} src={item.icon} />
               ))}
             </div>
           </div>
@@ -81,4 +79,4 @@ const Tutorial = ({
   );
 };
 
-export default Tutorial;
+export default RoadMap;

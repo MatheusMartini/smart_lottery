@@ -62,7 +62,7 @@ return !contract ? null : (
               <div className="h-60 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs ">
                 {players?.map((p) => (
                       
-                  <div className="max-w-xs rounded shadow-lg ">
+                  <div key={p.length} className="max-w-xs rounded shadow-lg ">
                     <div className="py-4 ">
                       <div className="font-bold text-xs mb-2 truncate ... indent-2 ">{p}</div>
                     </div>
