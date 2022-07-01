@@ -8,31 +8,63 @@ const Players = () => {
   const [players, setPlayers] = useState([]);
   const {activate } = useWeb3React()
 
-  useEffect(() => {
-    const connectWalletOnPageLoad = async () => {
-      if (localStorage?.getItem('isWalletConnected') === 'true') {
-        try {
-          await activate(injected)
-          localStorage.setItem('isWalletConnected', 'true')
-        } catch (ex) {
-          console.log(ex)
-        }
-      }
-    }
-    connectWalletOnPageLoad()
-  }, [])
+  const [web3, setWeb3] = useState()
+  const [address, setAddress] = useState()
+  const [amountLottery, setAmountLottery] = useState()
+
+  const [lotteryHistory, setLotteryHistory] = useState([])
+  const [lotteryId, setLotteryId] = useState()
+  const [error, setError] = useState('')
+  const [successMsg, setSuccessMsg] = useState('')
+
 
   useEffect(() => {
-    if (contract) {
-      contract.methods.getPlayers().call((err: any, res: any) => {
-        if (err) {
-          console.error(err);
-        } else {
-          setPlayers(res);
-        }
-      });
+    updateState()
+  }, [contract])
+
+  const updateState = () => {
+    connectWalletOnPageLoad()
+    //if (contract)getAmountLottery()
+    if (contract)getPlayers()
+    //if (contract)getLotteryId()
+  }
+
+  const connectWalletOnPageLoad = async () => {
+    if (localStorage?.getItem('isWalletConnected') === 'true') {
+      try {
+        await activate(injected)
+        localStorage.setItem('isWalletConnected', 'true')
+      } catch (ex) {
+        console.log(ex)
+      }
     }
-  }, [contract]);
+  }
+
+  const getPlayers = async () => {
+    const players = await contract.methods.getPlayers().call()
+      setPlayers(players);
+  }
+  const getLotteryId = async () => {
+    const lotteryId = await contract.methods.lotteryId().call()
+    setLotteryId(lotteryId)
+    await getHistory(lotteryId)
+  }
+
+  const getHistory = async (id) => {
+    setLotteryHistory([])
+    for (let i = parseInt(id); i > 0; i--) {
+      const winnerAddress = await contract.methods.lotteryHistory(i).call()
+      const historyObj = {}
+      historyObj.id = i
+      historyObj.address = winnerAddress
+      setLotteryHistory(lotteryHistory => [...lotteryHistory, historyObj])
+    }
+  }
+
+  const getAmountLottery = async () => {
+    const amount = await contract.methods.getBalance().call()
+    setAmountLottery(amount)
+  }
 
 return !contract ? null : (
     <>    
@@ -53,7 +85,7 @@ return !contract ? null : (
 
                 {/* title */}
               <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players.length} Address in Lottery 1
+              {players.length} Address in Lottery {lotteryId}1 and{amountLottery} 0.6 lottery balance
                 
               </p>
 
