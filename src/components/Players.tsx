@@ -18,17 +18,6 @@ const Players = () => {
   const [successMsg, setSuccessMsg] = useState('')
 
 
-  useEffect(() => {
-    updateState()
-  }, [contract])
-
-  const updateState = () => {
-    connectWalletOnPageLoad()
-    //if (contract)getAmountLottery()
-    if (contract)getPlayers()
-    //if (contract)getLotteryId()
-  }
-
   const connectWalletOnPageLoad = async () => {
     if (localStorage?.getItem('isWalletConnected') === 'true') {
       try {
@@ -38,32 +27,6 @@ const Players = () => {
         console.log(ex)
       }
     }
-  }
-
-  const getPlayers = async () => {
-    const players = await contract.methods.getPlayers().call()
-      setPlayers(players);
-  }
-  const getLotteryId = async () => {
-    const lotteryId = await contract.methods.lotteryId().call()
-    setLotteryId(lotteryId)
-    await getHistory(lotteryId)
-  }
-
-  const getHistory = async (id) => {
-    setLotteryHistory([])
-    for (let i = parseInt(id); i > 0; i--) {
-      const winnerAddress = await contract.methods.lotteryHistory(i).call()
-      const historyObj = {}
-      historyObj.id = i
-      historyObj.address = winnerAddress
-      setLotteryHistory(lotteryHistory => [...lotteryHistory, historyObj])
-    }
-  }
-
-  const getAmountLottery = async () => {
-    const amount = await contract.methods.getBalance().call()
-    setAmountLottery(amount)
   }
 
 return !contract ? null : (
