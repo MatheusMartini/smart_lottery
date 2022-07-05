@@ -27,7 +27,12 @@ const Languages = ({
     {
       icon:"/languages/typescript.svg"
     },
-
+    {
+      icon:"/languages/vercel.svg"
+    },
+    {
+      icon:"/languages/github.svg"
+    },
   ]
 
 }) => {

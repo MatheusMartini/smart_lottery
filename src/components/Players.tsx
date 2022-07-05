@@ -1,22 +1,32 @@
 import { useWeb3React } from "@web3-react/core";
 import React, { useState, useEffect } from "react";
+import Web3 from "web3";
 import { useLottery } from "../hooks/useLottery";
 import { injected } from "../utils/connectors";
 
 const Players = () => {
   const contract = useLottery();
-  const [players, setPlayers] = useState([]);
-  const {activate } = useWeb3React()
-
   const [web3, setWeb3] = useState()
-  const [address, setAddress] = useState()
-  const [amountLottery, setAmountLottery] = useState()
+  const {activate } = useWeb3React();
 
-  const [lotteryHistory, setLotteryHistory] = useState([])
-  const [lotteryId, setLotteryId] = useState()
-  const [error, setError] = useState('')
-  const [successMsg, setSuccessMsg] = useState('')
+  const [players, setPlayers] = useState([]);
 
+  const [amountLottery, setAmountLottery] = useState();
+
+  const [lotteryHistory, setLotteryHistory] = useState([]);
+
+  const [lotteryId, setLotteryId] = useState();
+  
+
+  useEffect(() => {
+    updateState()
+  }, [contract])
+
+  const updateState = () => {
+    if (contract) connectWalletOnPageLoad();
+    if (contract) getPlayers(); 
+    if (contract) getAmount(); 
+  }
 
   const connectWalletOnPageLoad = async () => {
     if (localStorage?.getItem('isWalletConnected') === 'true') {
@@ -29,18 +39,26 @@ const Players = () => {
     }
   }
 
+  const getPlayers = async () => {
+    const players = await contract.methods.getPlayers().call()
+    setPlayers(players)
+  }
+
+  const getAmount = async () => {
+    const pot = await contract.methods.balance().call();
+    setAmountLottery(Web3.utils.fromWei(pot,'ether'));
+  }
+
 return !contract ? null : (
     <>    
       <div className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto text-center justify-center py-24" id="players">
 
         <div className="flex flex-col w-full ">
 
-          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-medium text-black-600 leading-relaxed">
-              Lotteries Players
-          </h3>
-            <p className="leading-normal w-10/12 sm:w-7/12 lg:w-6/12 mx-auto my-2 text-center">
-              Sweepstakes participants
-            </p>
+        <h2 className='text-base text-indigo-600 font-semibold tracking-wide '>Sweepstakes participants</h2>
+          <p className='mt-2 pb-4 text-5xl lg:text-5xl font-bold tracking-tight text-gray-900'>
+            Lotteries Players
+          </p>
       
           {/* card players */}
           <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6 ">
@@ -48,7 +66,7 @@ return !contract ? null : (
 
                 {/* title */}
               <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players.length} Address in Lottery {lotteryId}1 and{amountLottery} 0.6 lottery balance
+              {players.length} Address in Lottery {lotteryId}1 Balance of {amountLottery}
                 
               </p>
 
