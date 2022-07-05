@@ -57,24 +57,24 @@ export default function Navbar() {
           >
             About
           </LinkScroll>
-          {/* RoadMap */}
+          {/* Guide */}
           <LinkScroll
             activeClass="active"
-            to="roadmap"
+            to="guide"
             spy={true}
             smooth={true}
             duration={1000}
             onSetActive={() => {
-              setActiveLink("roadmap");
+              setActiveLink("guide");
             }}
             className={
               "px-4 py-2 mx-2 cursor-pointer animation-hover inline-block relative" +
-              (activeLink === "roadmap"
+              (activeLink === "guide"
                 ? " text-orange-500 animation-active "
                 : " text-black-500 hover:text-orange-500 a")
             }
           >
-            Road Map
+            Guide
           </LinkScroll>
           {/* lotteries */}
           {active ? 
@@ -162,19 +162,19 @@ export default function Navbar() {
               </svg>
               About
             </LinkScroll>
-            {/* RoadMap */}
+            {/* guide */}
             <LinkScroll
               activeClass="active"
-              to="roadmap"
+              to="guide"
               spy={true}
               smooth={true}
               duration={1000}
               onSetActive={() => {
-                setActiveLink("roadmap");
+                setActiveLink("guide");
               }}
               className={
                 "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs border-t-2 transition-all " +
-                (activeLink === "roadmap"
+                (activeLink === "guide"
                   ? "  border-orange-500 text-orange-500"
                   : " border-transparent")
               }
@@ -193,7 +193,7 @@ export default function Navbar() {
                   d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Road Map
+              Guide
             </LinkScroll>
             {/* lotteries */}
             <LinkScroll

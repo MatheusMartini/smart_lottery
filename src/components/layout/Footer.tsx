@@ -49,7 +49,7 @@ import github from '../../../public/assets/Icon/github.svg';
             <p className="text-black-600 mb-4 font-medium text-lg">Bsc Scan</p>
             <ul className="text-black-500">            
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-                <a href="https://testnet.bscscan.com/address/0x1fdb803bce3a63d4327826b6cf2653eb5568d1e8" target="_blank">
+                <a href="https://testnet.bscscan.com/address/0x3b2B29d80dC22E1a4B7b12d94b093c2312D04b92" target="_blank">
                   Contract TestNet
                 </a>
               </li>

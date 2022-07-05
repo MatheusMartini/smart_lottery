@@ -4,7 +4,7 @@ import Head from 'next/head'
 import About from '../components/About'
 import MyLottery from '../components/Lotteries'
 import Players from '../components/Players'
-import RoadMap from '../components/RoadMap'
+import Guide from '../components/Guide'
 import MainContainer from '../components/layout/MainContainer';
 import Languages from '../components/Languages'
 
@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
         <MainContainer>
           <About/>
-          <RoadMap/>
+          <Guide/>
           <MyLottery/>
           <Players/>
           <Languages/>
