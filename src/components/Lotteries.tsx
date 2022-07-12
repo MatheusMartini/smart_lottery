@@ -1,7 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import Participate from "./misc/Participate";
+import Participate03 from "./misc/Participate0.3";
+import Participate05 from "./misc/Participate0.5";
 import PickWinner from "./misc/PickWinner";
+import PickWinner03 from "./misc/PickWinner03";
+import PickWinner05 from "./misc/PickWinner05";
 import { useWeb3React } from "@web3-react/core";
 
 const Lotteries = () => {
@@ -40,7 +44,7 @@ const Lotteries = () => {
                     {/* descrições da loteria */}
                   <ul className="flex flex-col list-inside pl-6 xl:pl-0 text-center text-black-500 flex-grow">
                     <li className="relative check custom-list my-2">
-                      buy a ticket and win the prize of: amount contract
+                      Buy a ticket and win the prize of: amount contract
                     </li>
                   </ul>
                     {/* botão para chamar contrato */}
@@ -48,57 +52,65 @@ const Lotteries = () => {
                     <p className="text-2xl text-black-600 text-center mb-4 ">
                       <Participate/>
                     </p>
-                      <PickWinner/>
+                      {/* <PickWinner/> */}
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20">
+                <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-10">
+                  {/* trocar imagem talvez */}
                   <div className="p-4 lg:p-0 mt-6 lg:mt-16">
                     <Image
-                      src="/assets/Standard.png"
+                      src="/assets/Free.png"
                       width={145}
                       height={165}
-                      alt="Standard Plan"
+                      alt="Free Plan"
                       />
                   </div>
+                    {/* titulo da loteria    */}
                   <p className="text-lg text-black-600 font-medium capitalize my-2 sm:my-7">
-                    Lottery 2{" "}
+                    Lottery 2
                   </p>
-                  <ul className="flex flex-col list-inside pl-6 xl:pl-0 items-start justify-start text-left text-black-500 flex-grow">
+                    {/* descrições da loteria */}
+                  <ul className="flex flex-col list-inside pl-6 xl:pl-0 text-center text-black-500 flex-grow">
                     <li className="relative check custom-list my-2">
-                      Coming soon...
+                      Buy a ticket and win the prize of: amount contract
                     </li>
                   </ul>
+                    {/* botão para chamar contrato */}
                   <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                     <p className="text-2xl text-black-600 text-center mb-4 ">
-                      0.3 ether
+                      <Participate03/>
                     </p>
-                
+                      {/* <PickWinner/> */}
                   </div>
                 </div>
-    
-                <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20">
+
+                <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-10">
+                  {/* trocar imagem talvez */}
                   <div className="p-4 lg:p-0 mt-6 lg:mt-16">
                     <Image
-                      src="/assets/Premium.png"
+                      src="/assets/Free.png"
                       width={145}
                       height={165}
-                      alt="Premium Plan"
+                      alt="Free Plan"
                       />
                   </div>
+                    {/* titulo da loteria    */}
                   <p className="text-lg text-black-600 font-medium capitalize my-2 sm:my-7">
-                    Lottery 3{" "}
+                    Lottery 3
                   </p>
-                  <ul className="flex flex-col list-inside pl-6 xl:pl-0 items-start justify-start text-left text-black-500 flex-grow">
+                    {/* descrições da loteria */}
+                  <ul className="flex flex-col list-inside pl-6 xl:pl-0 text-center text-black-500 flex-grow">
                     <li className="relative check custom-list my-2">
-                      Coming soon...
+                      Buy a ticket and win the prize of: amount contract
                     </li>
                   </ul>
+                    {/* botão para chamar contrato */}
                   <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                     <p className="text-2xl text-black-600 text-center mb-4 ">
-                      0.5 ether
+                      <Participate05/>
                     </p>
-
+                      {/* <PickWinner/> */}
                   </div>
                 </div>
 
