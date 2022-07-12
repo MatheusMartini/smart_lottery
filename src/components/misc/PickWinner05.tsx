@@ -1,10 +1,10 @@
 import { useWeb3React } from "@web3-react/core";
 import { useState } from "react";
-import { useLottery1 } from "../../hooks/useLottery";
+import { useLottery3 } from "../../hooks/useLottery05";
 
 const PickWinner = () => {
   const web3 = useWeb3React();
-  const contract = useLottery1();
+  const contract = useLottery3();
 
   const [owner, setOwner] = useState();
 

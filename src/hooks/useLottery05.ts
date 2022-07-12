@@ -4,14 +4,14 @@ import Web3 from "web3";
 import { abi } from "../abi/Lottery.json";
 import { AbiItem } from "web3-utils";
 
-export const useLottery1 = () => {
+export const useLottery3 = () => {
   const web3 = useWeb3React<Web3>();
 
   const contract = useMemo(() => {
     if (web3.account) {
       return new web3.library!.eth.Contract(
         abi as AbiItem[],
-        "0x3b5bd01efBC31319B2D321AdBf1eFb46707d41a8" // new smart contract 
+        "0xF036cE83F4318fb46Fa62aFA9a1f122beBCef0F6" // new smart contract 
       );
     }
 
