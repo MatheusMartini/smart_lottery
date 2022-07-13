@@ -15,9 +15,9 @@ const Players = () => {
   const [players2, setPlayers2] = useState([]);
   const [players3, setPlayers3] = useState([]);
 
-  const [amountLottery1, setAmountLottery1] = useState();
-  const [amountLottery2, setAmountLottery2] = useState();
-  const [amountLottery3, setAmountLottery3] = useState();
+  const [amountLottery1, setAmountLottery1] = useState([]);
+  const [amountLottery2, setAmountLottery2] = useState([]);
+  const [amountLottery3, setAmountLottery3] = useState([]);
 
   const [web3, setWeb3] = useState()
   const {activate } = useWeb3React();
@@ -70,15 +70,18 @@ const Players = () => {
 
   const getAmount1 = async () => {
     const pot = await contract1.methods.balance().call();
-    setAmountLottery1(Web3.utils.fromWei(pot,'ether'));
+    const a = Web3.utils.fromWei(pot,'ether')
+    setAmountLottery1([a]);
   }
   const getAmount2 = async () => {
     const pot = await contract2.methods.balance().call();
-    setAmountLottery2(Web3.utils.fromWei(pot,'ether'));
+    const a = Web3.utils.fromWei(pot,'ether')
+    setAmountLottery2([a]);
   }
   const getAmount3 = async () => {
     const pot = await contract3.methods.balance().call();
-    setAmountLottery3(Web3.utils.fromWei(pot,'ether'));
+    const a = Web3.utils.fromWei(pot,'ether')
+    setAmountLottery3([a]);
   }
 
   const [address, setAddress] = useState()
