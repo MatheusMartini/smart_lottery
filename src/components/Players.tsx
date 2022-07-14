@@ -35,6 +35,7 @@ const Players = () => {
 
   useEffect(() => {
     updateState()
+
   }, [contract1])
 
   const updateState = () => {
@@ -48,7 +49,7 @@ const Players = () => {
     if (contract2) getAmount2(); 
     if (contract3) getAmount3(); 
     
-    // if (contract1) getHistory(count1);
+    if (contract1) getLotteryId();
   }
 
   const connectWalletOnPageLoad = async () => {
@@ -92,16 +93,24 @@ const Players = () => {
     setAmountLottery3([a]);
   }
 
-  // const getHistory = async (id) => {
-  //   setLotteryHistory1([])
-  //   for (let i = parseInt(id); i > 0; i--) {
-  //     const winnerAddress = await contract1.methods.lotteryHistory(i).call()
-  //     const historyObj = {}
-  //     historyObj.id = i
-  //     historyObj.address = winnerAddress
-  //     setLotteryHistory1(lotteryHistory => [...lotteryHistory, historyObj])
-  //   }
-  // }
+  const getHistory = async (id) => {
+    setLotteryHistory1([])
+    for (let i = parseInt(id); i > 0; i--) {
+      const winnerAddress = await contract1.methods.lotteryHistory(i).call()
+      const historyObj = {id, address:null}
+      historyObj.id = i
+      historyObj.address = winnerAddress
+      setLotteryHistory1(lotteryHistory => [...lotteryHistory, historyObj])
+    }
+  }
+
+  const getLotteryId = async () => {
+      const lotteryId = await contract1.methods.getLotteryId().call()
+      setLotteryId1(lotteryId)
+      await getHistory(lotteryId)
+  }
+
+
   // const [address, setAddress] = useState()
   // const [lcContract, setLcContract] = useState()
   
