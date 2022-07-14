@@ -48,7 +48,7 @@ const Players = () => {
     if (contract2) getAmount2(); 
     if (contract3) getAmount3(); 
     
-    if (contract1) getHistory(count1);
+    // if (contract1) getHistory(count1);
   }
 
   const connectWalletOnPageLoad = async () => {
@@ -92,16 +92,16 @@ const Players = () => {
     setAmountLottery3([a]);
   }
 
-  const getHistory = async (id) => {
-    setLotteryHistory1([])
-    for (let i = parseInt(id); i > 0; i--) {
-      const winnerAddress = await contract1.methods.lotteryHistory(i).call()
-      const historyObj = {}
-      historyObj.id = i
-      historyObj.address = winnerAddress
-      setLotteryHistory1(lotteryHistory => [...lotteryHistory, historyObj])
-    }
-  }
+  // const getHistory = async (id) => {
+  //   setLotteryHistory1([])
+  //   for (let i = parseInt(id); i > 0; i--) {
+  //     const winnerAddress = await contract1.methods.lotteryHistory(i).call()
+  //     const historyObj = {}
+  //     historyObj.id = i
+  //     historyObj.address = winnerAddress
+  //     setLotteryHistory1(lotteryHistory => [...lotteryHistory, historyObj])
+  //   }
+  // }
   // const [address, setAddress] = useState()
   // const [lcContract, setLcContract] = useState()
   
@@ -243,7 +243,7 @@ return !contract1 ? null : (
               <div className="h-10 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs ">
                 {
                   (lotteryHistory1 && lotteryHistory1.length > 0) && lotteryHistory1.map(item => {
-                    console.log(item)
+                    // console.log(item)
                     if (item.id) {
                       return (
                         <>
