@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Participate from "./misc/Participate";
 import Participate03 from "./misc/Participate0.3";
@@ -7,9 +7,29 @@ import PickWinner from "./misc/PickWinner";
 import PickWinner03 from "./misc/PickWinner03";
 import PickWinner05 from "./misc/PickWinner05";
 import { useWeb3React } from "@web3-react/core";
+import { useLottery1 } from "../hooks/useLottery";
 
 const Lotteries = () => {
-    const {active} = useWeb3React();
+    const {active, account} = useWeb3React();
+
+    const contract = useLottery1();
+    
+    useEffect(() => {
+      getOwner()
+    });
+
+    const [owner, setOwner] = useState();
+  
+    const getOwner = async () => {
+      try {
+        const owner = await contract.methods.OWNER().call()
+        setOwner(owner);
+      } catch (error) {
+        console.log(error)
+        null
+      }
+
+    }
     
     return (
     <>
@@ -52,7 +72,7 @@ const Lotteries = () => {
                     <p className="text-2xl text-black-600 text-center mb-4 ">
                       <Participate/>
                     </p>
-                      <PickWinner/>
+                      {account == owner ?<PickWinner/>: ""}
                   </div>
                 </div>
 
@@ -81,7 +101,7 @@ const Lotteries = () => {
                     <p className="text-2xl text-black-600 text-center mb-4 ">
                       <Participate03/>
                     </p>
-                      {/* <PickWinner/> */}
+                      {account == owner ?<PickWinner03/>: ""}
                   </div>
                 </div>
 
@@ -110,7 +130,7 @@ const Lotteries = () => {
                     <p className="text-2xl text-black-600 text-center mb-4 ">
                       <Participate05/>
                     </p>
-                      {/* <PickWinner/> */}
+                      {account == owner ?<PickWinner05/>: ""}
                   </div>
                 </div>
 

@@ -6,13 +6,6 @@ const PickWinner = () => {
   const web3 = useWeb3React();
   const contract = useLottery1();
 
-  const [owner, setOwner] = useState();
-
-  const getOwner = async () => {
-    const owner = await contract.methods.owner().call()
-    setOwner(owner);
-  }
-
   // if(window.ethereum.selectedAddress == owner){
 
   // }
