@@ -30,9 +30,6 @@ const Players = () => {
   const [lotteryId2, setLotteryId2] = useState();
   const [lotteryId3, setLotteryId3] = useState();
   
-  const count1 = 2;
-  
-
   useEffect(() => {
     updateState()
 
@@ -49,7 +46,8 @@ const Players = () => {
     if (contract2) getAmount2(); 
     if (contract3) getAmount3(); 
     
-    if (contract1) getLotteryId();
+    if (contract1) getLotteryId1();
+
   }
 
   const connectWalletOnPageLoad = async () => {
@@ -93,23 +91,47 @@ const Players = () => {
     setAmountLottery3([a]);
   }
 
-  const getHistory = async (id) => {
+  const getHistory1 = async (id) => {
     setLotteryHistory1([])
-    for (let i = parseInt(id); i > 0; i--) {
-      const winnerAddress = await contract1.methods.lotteryHistory(i).call()
-      const historyObj = {id, address:null}
-      historyObj.id = i
+      const winnerAddress = await contract1.methods.lotteryHistory(id -1).call()
+      const historyObj = {address:null}
       historyObj.address = winnerAddress
       setLotteryHistory1(lotteryHistory => [...lotteryHistory, historyObj])
-    }
   }
 
-  const getLotteryId = async () => {
+  const getLotteryId1 = async () => {
       const lotteryId = await contract1.methods.getLotteryId().call()
       setLotteryId1(lotteryId)
-      await getHistory(lotteryId)
+      await getHistory1(lotteryId)
   }
 
+  const getHistory2 = async (id) => {
+    setLotteryHistory2([])
+      const winnerAddress = await contract2.methods.lotteryHistory(id -1).call()
+      const historyObj = {address:null}
+      historyObj.address = winnerAddress
+      setLotteryHistory2(lotteryHistory => [...lotteryHistory, historyObj])
+  }
+
+  const getLotteryId2 = async () => {
+      const lotteryId = await contract2.methods.getLotteryId().call()
+      setLotteryId2(lotteryId)
+      await getHistory2(lotteryId)
+  }
+
+  const getHistory3 = async (id) => {
+    setLotteryHistory3([])
+      const winnerAddress = await contract3.methods.lotteryHistory(id -1).call()
+      const historyObj = {address:null}
+      historyObj.address = winnerAddress
+      setLotteryHistory3(lotteryHistory => [...lotteryHistory, historyObj])
+  }
+
+  const getLotteryId3 = async () => {
+      const lotteryId = await contract3.methods.getLotteryId().call()
+      setLotteryId3(lotteryId)
+      await getHistory3(lotteryId)
+  }
 
   // const [address, setAddress] = useState()
   // const [lcContract, setLcContract] = useState()
@@ -167,7 +189,7 @@ return !contract1 ? null : (
 
                 {/* title */}
               <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players1.length} Address in Lottery {lotteryId1}1 Balance of {amountLottery1}
+              {players1.length} Address in Lottery 1 Balance of {amountLottery1}
                 
               </p>
 
@@ -244,20 +266,19 @@ return !contract1 ? null : (
 
                 {/* title */}
               <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-                Last Winner {lotteryId1}
+                Last Winner Lottery 1
               </p>
 
                 {/* list last winners */}
 
-              <div className="h-10 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs ">
+              <div className="h-10 overflow-y-auto ... lg:py-1 max-w-xs ">
                 {
-                  (lotteryHistory1 && lotteryHistory1.length > 0) && lotteryHistory1.map(item => {
-                    // console.log(item)
-                    if (item.id) {
+                  lotteryHistory1.map(item => {
+                    if (item.address !== null) {
                       return (
                         <>
                         <div className="history-entry mt-2">
-                          <a href={`https://testnet.bscscan.com/address/${item.address}`} target="_blank">
+                          <a className="text-base text-indigo-600 font-semibold tracking-wide " href={`https://testnet.bscscan.com/address/${item.address}`} target="_blank">
                               {item.address}
                           </a>
                         </div>
