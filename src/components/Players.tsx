@@ -7,6 +7,9 @@ import { useLottery3 } from "../hooks/useLottery05";
 import { injected } from "../utils/connectors";
 
 const Players = () => {
+  const [web3, setWeb3] = useState()
+  const {activate } = useWeb3React();
+
   const contract1 = useLottery1();
   const contract2 = useLottery2();
   const contract3 = useLottery3();
@@ -19,12 +22,15 @@ const Players = () => {
   const [amountLottery2, setAmountLottery2] = useState([]);
   const [amountLottery3, setAmountLottery3] = useState([]);
 
-  const [web3, setWeb3] = useState()
-  const {activate } = useWeb3React();
+  const [lotteryHistory1, setLotteryHistory1] = useState([]);
+  const [lotteryHistory2, setLotteryHistory2] = useState([]);
+  const [lotteryHistory3, setLotteryHistory3] = useState([]);
 
-  const [lotteryHistory, setLotteryHistory] = useState([]);
-
-  const [lotteryId, setLotteryId] = useState();
+  const [lotteryId1, setLotteryId1] = useState();
+  const [lotteryId2, setLotteryId2] = useState();
+  const [lotteryId3, setLotteryId3] = useState();
+  
+  const count1 = 2;
   
 
   useEffect(() => {
@@ -41,6 +47,8 @@ const Players = () => {
     if (contract1) getAmount1(); 
     if (contract2) getAmount2(); 
     if (contract3) getAmount3(); 
+    
+    if (contract1) getHistory(count1);
   }
 
   const connectWalletOnPageLoad = async () => {
@@ -84,8 +92,18 @@ const Players = () => {
     setAmountLottery3([a]);
   }
 
-  const [address, setAddress] = useState()
-  const [lcContract, setLcContract] = useState()
+  const getHistory = async (id) => {
+    setLotteryHistory1([])
+    for (let i = parseInt(id); i > 0; i--) {
+      const winnerAddress = await contract1.methods.lotteryHistory(i).call()
+      const historyObj = {}
+      historyObj.id = i
+      historyObj.address = winnerAddress
+      setLotteryHistory1(lotteryHistory => [...lotteryHistory, historyObj])
+    }
+  }
+  // const [address, setAddress] = useState()
+  // const [lcContract, setLcContract] = useState()
   
   // const connectWalletHandler = async () => {
 
@@ -140,7 +158,7 @@ return !contract1 ? null : (
 
                 {/* title */}
               <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players1.length} Address in Lottery {lotteryId}1 Balance of {amountLottery1}
+              {players1.length} Address in Lottery {lotteryId1}1 Balance of {amountLottery1}
                 
               </p>
 
@@ -153,9 +171,6 @@ return !contract1 ? null : (
                     <div className="py-4 ">
                       <div className="font-bold text-xs mb-2 truncate ... indent-2 ">{p}</div>
                     </div>
-                    <div className="pt-4 pb-2">
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#value</span>
-                    </div>
                   </div>
 
                 ))}
@@ -166,7 +181,7 @@ return !contract1 ? null : (
 
                 {/* title */}
               <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players2.length} Address in Lottery {lotteryId}2 Balance of {amountLottery2}
+              {players2.length} Address in Lottery {lotteryId2}2 Balance of {amountLottery2}
                 
               </p>
 
@@ -179,9 +194,6 @@ return !contract1 ? null : (
                     <div className="py-4 ">
                       <div className="font-bold text-xs mb-2 truncate ... indent-2 ">{p}</div>
                     </div>
-                    <div className="pt-4 pb-2">
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#value</span>
-                    </div>
                   </div>
 
                 ))}
@@ -192,7 +204,7 @@ return !contract1 ? null : (
 
                 {/* title */}
               <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players3.length} Address in Lottery {lotteryId}3 Balance of {amountLottery3}
+              {players3.length} Address in Lottery {lotteryId3}3 Balance of {amountLottery3}
                 
               </p>
 
@@ -205,9 +217,6 @@ return !contract1 ? null : (
                     <div className="py-4 ">
                       <div className="font-bold text-xs mb-2 truncate ... indent-2 ">{p}</div>
                     </div>
-                    <div className="pt-4 pb-2">
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#value</span>
-                    </div>
                   </div>
 
                 ))}
@@ -215,7 +224,44 @@ return !contract1 ? null : (
             </div>
 
           </div>
+          {/* end car players */}
 
+          <h2 className='text-base text-indigo-600 font-semibold tracking-wide '>See the latest lottery winners</h2>
+
+          {/* card last winners */}
+          <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6 ">
+
+            <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20 ">
+
+                {/* title */}
+              <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
+                Last Winner {lotteryId1}
+              </p>
+
+                {/* list last winners */}
+
+              <div className="h-10 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs ">
+                {
+                  (lotteryHistory1 && lotteryHistory1.length > 0) && lotteryHistory1.map(item => {
+                    console.log(item)
+                    if (item.id) {
+                      return (
+                        <>
+                        <div className="history-entry mt-2">
+                          <a href={`https://testnet.bscscan.com/address/${item.address}`} target="_blank">
+                              {item.address}
+                          </a>
+                        </div>
+                      </>
+                      )
+                    }
+                  })
+                }
+              </div>
+            </div>
+
+          </div>
+          {/* end card last winners */}
         </div>
       </div>
     </>

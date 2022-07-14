@@ -52,7 +52,7 @@ const Lotteries = () => {
                     <p className="text-2xl text-black-600 text-center mb-4 ">
                       <Participate/>
                     </p>
-                      {/* <PickWinner/> */}
+                      <PickWinner/>
                   </div>
                 </div>
 
