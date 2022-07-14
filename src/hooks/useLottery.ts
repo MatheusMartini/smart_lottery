@@ -11,7 +11,7 @@ export const useLottery1 = () => {
     if (web3.account) {
       return new web3.library!.eth.Contract(
         abi as AbiItem[],
-        "0x3b5bd01efBC31319B2D321AdBf1eFb46707d41a8" // new smart contract 
+        "0x8500367cdd0730BE8A2A305239A2cBB40b4b8549" // new smart contract 
       );
     }
 
