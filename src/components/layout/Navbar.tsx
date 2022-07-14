@@ -196,6 +196,7 @@ export default function Navbar() {
               Guide
             </LinkScroll>
             {/* lotteries */}
+            {active ?    
             <LinkScroll
               activeClass="active"
               to="lotteries"
@@ -228,7 +229,9 @@ export default function Navbar() {
               </svg>
               Lotteries
             </LinkScroll>
+            : ""}
             {/* players */}
+            {active ?  
             <LinkScroll
               activeClass="active"
               to="players"
@@ -261,6 +264,7 @@ export default function Navbar() {
               </svg>
               Players
             </LinkScroll>
+            : ""}
           </ul>
         </div>
       </nav>
