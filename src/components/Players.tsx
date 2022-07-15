@@ -3,32 +3,20 @@ import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import { useLottery } from "../hooks/useLottery";
 import { injected } from "../utils/connectors";
+import ListPlayers from "./ListPlayers";
+import ListLastWinners from "./ListLastWinners";
 
 const Players = () => {
-  const [web3, setWeb3] = useState()
   const {activate } = useWeb3React();
 
   const contract = useLottery("0x8500367cdd0730BE8A2A305239A2cBB40b4b8549");
 
-  const [players, setPlayers] = useState([]);
-
-  const [amountLottery, setAmountLottery] = useState([]);
-
-  const [lotteryHistory, setLotteryHistory] = useState([]);
-
-  const [lotteryId, setLotteryId] = useState();
-
   useEffect(() => {
     updateState()
-
   }, [contract])
 
   const updateState = () => {
-    if (contract) connectWalletOnPageLoad();
-    if (contract) getPlayersLottery(); 
-    if (contract) getAmount(); 
-    if (contract) getLotteryId();
-
+    if (contract) connectWalletOnPageLoad(); 
   }
 
   const connectWalletOnPageLoad = async () => {
@@ -40,31 +28,6 @@ const Players = () => {
         console.log(ex)
       }
     }
-  }
-
-  const getPlayersLottery = async () => {
-    const players = await contract.methods.getPlayers().call()
-    setPlayers(players)
-  }
-
-  const getAmount = async () => {
-    const pot = await contract.methods.balance().call();
-    const a = Web3.utils.fromWei(pot,'ether')
-    setAmountLottery([a]);
-  }
-
-  const getHistory = async (id) => {
-    setLotteryHistory([])
-      const winnerAddress = await contract.methods.lotteryHistory(id -1).call()
-      const historyObj = {address:null}
-      historyObj.address = winnerAddress
-      setLotteryHistory(lotteryHistory => [...lotteryHistory, historyObj])
-  }
-
-  const getLotteryId = async () => {
-      const lotteryId = await contract.methods.getLotteryId().call()
-      setLotteryId(lotteryId)
-      await getHistory(lotteryId)
   }
 
 return !contract ? null : (
@@ -80,30 +43,9 @@ return !contract ? null : (
       
           {/* card players */}
           <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6 ">
-
-            <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20 ">
-
-                {/* title */}
-              <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players.length} Address in Lottery 1 Balance of {amountLottery}
-                
-              </p>
-
-                {/* list players */}
-
-              <div className="h-60 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs ">
-                {players?.map((p) => (
-                      
-                  <div key={p.length} className="max-w-xs rounded shadow-lg ">
-                    <div className="py-4 ">
-                      <div className="font-bold text-xs mb-2 truncate ... indent-2 ">{p}</div>
-                    </div>
-                  </div>
-
-                ))}
-              </div>
-            </div>
-
+            <ListPlayers contracts={"0x8500367cdd0730BE8A2A305239A2cBB40b4b8549"} lotteryId={1}/>
+            <ListPlayers contracts={"0x5d6dB8D5c7fE61b53Ed02Dc0dEE5a66f751dc5A5"} lotteryId={2}/>
+            <ListPlayers contracts={"0x5B76090a3637f343A7c30719f642a3f37e49c586"} lotteryId={3}/>
           </div>
           {/* end car players */}
 
@@ -111,35 +53,9 @@ return !contract ? null : (
 
           {/* card last winners */}
           <div className="grid grid-flow-row sm:grid-flow-col grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-12 py-8 lg:py-12 px-6 sm:px-0 lg:px-6 ">
-
-            <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20 ">
-
-                {/* title */}
-              <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-                Last Winner Lottery 1
-              </p>
-
-                {/* list last winners */}
-
-              <div className="h-10 overflow-y-auto ... lg:py-1 max-w-xs ">
-                {
-                  lotteryHistory.map(item => {
-                    if (item.address !== null) {
-                      return (
-                        <>
-                        <div className="history-entry mt-2">
-                          <a className="text-base text-indigo-600 font-semibold tracking-wide " href={`https://testnet.bscscan.com/address/${item.address}`} target="_blank">
-                              {item.address}
-                          </a>
-                        </div>
-                      </>
-                      )
-                    }
-                  })
-                }
-              </div>
-            </div>
-
+            <ListLastWinners contracts={"0x8500367cdd0730BE8A2A305239A2cBB40b4b8549"} lotteryId={1}/>
+            <ListLastWinners contracts={"0x5d6dB8D5c7fE61b53Ed02Dc0dEE5a66f751dc5A5"} lotteryId={2}/>
+            <ListLastWinners contracts={"0x5B76090a3637f343A7c30719f642a3f37e49c586"} lotteryId={3}/>
           </div>
           {/* end card last winners */}
         </div>

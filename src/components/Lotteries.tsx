@@ -37,7 +37,7 @@ const Lotteries = () => {
 
               <h2 className='text-base text-indigo-600 font-semibold tracking-wide '>Participate in blockchain sweepstakes!</h2>
               <p className='mt-2 pb-4 text-5xl lg:text-5xl font-bold tracking-tight text-gray-900'>
-              Choose Your Lottery
+                Choose Your Lottery
               </p>
         
               {/* card das loterias */}
@@ -95,9 +95,9 @@ const Lotteries = () => {
                     {/* botão para chamar contrato */}
                   <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                     <p className="text-2xl text-black-600 text-center mb-4 ">
-                      <Participate price={0.3} contracts={"0x1e00D289338A6010C187eF14AF59FB38423FCc77"}/>
+                      <Participate price={0.3} contracts={"0x5d6dB8D5c7fE61b53Ed02Dc0dEE5a66f751dc5A5"}/>
                     </p>
-                      {account == owner ?<PickWinner contracts={"0x1e00D289338A6010C187eF14AF59FB38423FCc77"}/>: ""}
+                      {account == owner ?<PickWinner contracts={"0x5d6dB8D5c7fE61b53Ed02Dc0dEE5a66f751dc5A5"}/>: ""}
                   </div>
                 </div>
 
@@ -124,9 +124,9 @@ const Lotteries = () => {
                     {/* botão para chamar contrato */}
                   <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                     <p className="text-2xl text-black-600 text-center mb-4 ">
-                      <Participate price={0.5} contracts={"0xF036cE83F4318fb46Fa62aFA9a1f122beBCef0F6"}/>
+                      <Participate price={0.5} contracts={"0x5B76090a3637f343A7c30719f642a3f37e49c586"}/>
                     </p>
-                      {account == owner ?<PickWinner contracts={"0xF036cE83F4318fb46Fa62aFA9a1f122beBCef0F6"}/>: ""}
+                      {account == owner ?<PickWinner contracts={"0x5B76090a3637f343A7c30719f642a3f37e49c586"}/>: ""}
                   </div>
                 </div>
 
