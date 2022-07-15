@@ -12,6 +12,7 @@ const Participate = ({price, contracts}) => {
         contract.methods.enter().send({
           from: web3.account,
           value: (price * 1e18).toString(),
+          // gas: 300000,
         });
       }}
     >
