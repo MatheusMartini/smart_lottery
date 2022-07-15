@@ -5,25 +5,18 @@ import { useLottery } from "../hooks/useLottery";
 
 const ListPlayers = ({contracts, lotteryId}) => {
 
-  const [web3, setWeb3] = useState()
-  const {activate } = useWeb3React();
-
   const contract = useLottery(contracts);
-
   const [players, setPlayers] = useState([]);
-
   const [amountLottery, setAmountLottery] = useState([]);
 
   useEffect(() => {
     updateState()
-
-  }, [contract])
+  }, [players])
 
   const updateState = () => {
     if (contract) getPlayersLottery(); 
     if (contract) getAmount(); 
   }
-
 
   const getPlayersLottery = async () => {
     const players = await contract.methods.getPlayers().call()
