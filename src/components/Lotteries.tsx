@@ -1,18 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Participate from "./misc/Participate";
-import Participate03 from "./misc/Participate0.3";
-import Participate05 from "./misc/Participate0.5";
 import PickWinner from "./misc/PickWinner";
-import PickWinner03 from "./misc/PickWinner03";
-import PickWinner05 from "./misc/PickWinner05";
 import { useWeb3React } from "@web3-react/core";
-import { useLottery1 } from "../hooks/useLottery";
+import { useLottery } from "../hooks/useLottery";
 
 const Lotteries = () => {
     const {active, account} = useWeb3React();
 
-    const contract = useLottery1();
+    const contract = useLottery("0x8500367cdd0730BE8A2A305239A2cBB40b4b8549");
     
     useEffect(() => {
       getOwner()
@@ -70,9 +66,9 @@ const Lotteries = () => {
                     {/* botão para chamar contrato */}
                   <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                     <p className="text-2xl text-black-600 text-center mb-4 ">
-                      <Participate/>
+                      <Participate price={0.1} contracts={"0x8500367cdd0730BE8A2A305239A2cBB40b4b8549"}/>
                     </p>
-                      {account == owner ?<PickWinner/>: ""}
+                      {account == owner ?<PickWinner contracts={"0x8500367cdd0730BE8A2A305239A2cBB40b4b8549"}/>: ""}
                   </div>
                 </div>
 
@@ -99,9 +95,9 @@ const Lotteries = () => {
                     {/* botão para chamar contrato */}
                   <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                     <p className="text-2xl text-black-600 text-center mb-4 ">
-                      <Participate03/>
+                      <Participate price={0.3} contracts={"0x1e00D289338A6010C187eF14AF59FB38423FCc77"}/>
                     </p>
-                      {account == owner ?<PickWinner03/>: ""}
+                      {account == owner ?<PickWinner contracts={"0x1e00D289338A6010C187eF14AF59FB38423FCc77"}/>: ""}
                   </div>
                 </div>
 
@@ -128,9 +124,9 @@ const Lotteries = () => {
                     {/* botão para chamar contrato */}
                   <div className="flex flex-col w-full justify-center mb-8 flex-none mt-12">
                     <p className="text-2xl text-black-600 text-center mb-4 ">
-                      <Participate05/>
+                      <Participate price={0.5} contracts={"0xF036cE83F4318fb46Fa62aFA9a1f122beBCef0F6"}/>
                     </p>
-                      {account == owner ?<PickWinner05/>: ""}
+                      {account == owner ?<PickWinner contracts={"0xF036cE83F4318fb46Fa62aFA9a1f122beBCef0F6"}/>: ""}
                   </div>
                 </div>
 

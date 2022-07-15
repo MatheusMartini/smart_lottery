@@ -1,52 +1,33 @@
 import { useWeb3React } from "@web3-react/core";
 import React, { useState, useEffect } from "react";
 import Web3 from "web3";
-import { useLottery1 } from "../hooks/useLottery";
-import { useLottery2 } from "../hooks/useLottery03";
-import { useLottery3 } from "../hooks/useLottery05";
+import { useLottery } from "../hooks/useLottery";
 import { injected } from "../utils/connectors";
 
 const Players = () => {
   const [web3, setWeb3] = useState()
   const {activate } = useWeb3React();
 
-  const contract1 = useLottery1();
-  const contract2 = useLottery2();
-  const contract3 = useLottery3();
+  const contract = useLottery("0x8500367cdd0730BE8A2A305239A2cBB40b4b8549");
 
-  const [players1, setPlayers1] = useState([]);
-  const [players2, setPlayers2] = useState([]);
-  const [players3, setPlayers3] = useState([]);
+  const [players, setPlayers] = useState([]);
 
-  const [amountLottery1, setAmountLottery1] = useState([]);
-  const [amountLottery2, setAmountLottery2] = useState([]);
-  const [amountLottery3, setAmountLottery3] = useState([]);
+  const [amountLottery, setAmountLottery] = useState([]);
 
-  const [lotteryHistory1, setLotteryHistory1] = useState([]);
-  const [lotteryHistory2, setLotteryHistory2] = useState([]);
-  const [lotteryHistory3, setLotteryHistory3] = useState([]);
+  const [lotteryHistory, setLotteryHistory] = useState([]);
 
-  const [lotteryId1, setLotteryId1] = useState();
-  const [lotteryId2, setLotteryId2] = useState();
-  const [lotteryId3, setLotteryId3] = useState();
-  
+  const [lotteryId, setLotteryId] = useState();
+
   useEffect(() => {
     updateState()
 
-  }, [contract1])
+  }, [contract])
 
   const updateState = () => {
-    if (contract1) connectWalletOnPageLoad();
-    
-    if (contract1) getPlayersLottery1(); 
-    if (contract2) getPlayersLottery2(); 
-    if (contract3) getPlayersLottery3(); 
-
-    if (contract1) getAmount1(); 
-    if (contract2) getAmount2(); 
-    if (contract3) getAmount3(); 
-    
-    if (contract1) getLotteryId1();
+    if (contract) connectWalletOnPageLoad();
+    if (contract) getPlayersLottery(); 
+    if (contract) getAmount(); 
+    if (contract) getLotteryId();
 
   }
 
@@ -61,117 +42,32 @@ const Players = () => {
     }
   }
 
-  const getPlayersLottery1 = async () => {
-    const players = await contract1.methods.getPlayers().call()
-    setPlayers1(players)
-  }
-  const getPlayersLottery2 = async () => {
-    const players = await contract2.methods.getPlayers().call()
-    setPlayers2(players)
-  }
-  const getPlayersLottery3 = async () => {
-    const players = await contract3.methods.getPlayers().call()
-    setPlayers3(players)
+  const getPlayersLottery = async () => {
+    const players = await contract.methods.getPlayers().call()
+    setPlayers(players)
   }
 
-
-  const getAmount1 = async () => {
-    const pot = await contract1.methods.balance().call();
+  const getAmount = async () => {
+    const pot = await contract.methods.balance().call();
     const a = Web3.utils.fromWei(pot,'ether')
-    setAmountLottery1([a]);
-  }
-  const getAmount2 = async () => {
-    const pot = await contract2.methods.balance().call();
-    const a = Web3.utils.fromWei(pot,'ether')
-    setAmountLottery2([a]);
-  }
-  const getAmount3 = async () => {
-    const pot = await contract3.methods.balance().call();
-    const a = Web3.utils.fromWei(pot,'ether')
-    setAmountLottery3([a]);
+    setAmountLottery([a]);
   }
 
-  const getHistory1 = async (id) => {
-    setLotteryHistory1([])
-      const winnerAddress = await contract1.methods.lotteryHistory(id -1).call()
+  const getHistory = async (id) => {
+    setLotteryHistory([])
+      const winnerAddress = await contract.methods.lotteryHistory(id -1).call()
       const historyObj = {address:null}
       historyObj.address = winnerAddress
-      setLotteryHistory1(lotteryHistory => [...lotteryHistory, historyObj])
+      setLotteryHistory(lotteryHistory => [...lotteryHistory, historyObj])
   }
 
-  const getLotteryId1 = async () => {
-      const lotteryId = await contract1.methods.getLotteryId().call()
-      setLotteryId1(lotteryId)
-      await getHistory1(lotteryId)
+  const getLotteryId = async () => {
+      const lotteryId = await contract.methods.getLotteryId().call()
+      setLotteryId(lotteryId)
+      await getHistory(lotteryId)
   }
 
-  const getHistory2 = async (id) => {
-    setLotteryHistory2([])
-      const winnerAddress = await contract2.methods.lotteryHistory(id -1).call()
-      const historyObj = {address:null}
-      historyObj.address = winnerAddress
-      setLotteryHistory2(lotteryHistory => [...lotteryHistory, historyObj])
-  }
-
-  const getLotteryId2 = async () => {
-      const lotteryId = await contract2.methods.getLotteryId().call()
-      setLotteryId2(lotteryId)
-      await getHistory2(lotteryId)
-  }
-
-  const getHistory3 = async (id) => {
-    setLotteryHistory3([])
-      const winnerAddress = await contract3.methods.lotteryHistory(id -1).call()
-      const historyObj = {address:null}
-      historyObj.address = winnerAddress
-      setLotteryHistory3(lotteryHistory => [...lotteryHistory, historyObj])
-  }
-
-  const getLotteryId3 = async () => {
-      const lotteryId = await contract3.methods.getLotteryId().call()
-      setLotteryId3(lotteryId)
-      await getHistory3(lotteryId)
-  }
-
-  // const [address, setAddress] = useState()
-  // const [lcContract, setLcContract] = useState()
-  
-  // const connectWalletHandler = async () => {
-
-  //   /* check if MetaMask is installed */
-  //   if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
-  //     try {
-  //       /* request wallet connection */
-  //       await window.ethereum.request({ method: "eth_requestAccounts"})
-  //       /* create web3 instance & set to state */
-  //       const a = new Web3(window.ethereum)
-  //       /* set web3 instance in React state */
-  //       setWeb3(a)
-  //       /* get list of accounts */
-  //       const accounts = await web3.eth.getAccounts()
-  //       /* set account 1 to React state */
-  //       setAddress(accounts[0])
-
-  //       /* create local contract copy */
-  //       const lc = lotteryContract(web3)
-  //       setLcContract(lc) 
-
-  //       window.ethereum.on('accountsChanged', async () => {
-  //         const accounts = await web3.eth.getAccounts()
-  //         console.log(accounts[0])
-  //         /* set account 1 to React state */
-  //         setAddress(accounts[0])
-  //       })
-  //     } catch(err) {
-  //       console.log(err.message)
-  //     }
-  //   } else {
-  //     /* MetaMask is not installed */
-  //     console.log("Please install MetaMask")
-  //   }
-  // }
-
-return !contract1 ? null : (
+return !contract ? null : (
     <>    
       <div className="max-w-screen-xl px-6 sm:px-8 lg:px-16 mx-auto text-center justify-center py-24" id="players">
 
@@ -189,60 +85,14 @@ return !contract1 ? null : (
 
                 {/* title */}
               <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players1.length} Address in Lottery 1 Balance of {amountLottery1}
+              {players.length} Address in Lottery 1 Balance of {amountLottery}
                 
               </p>
 
                 {/* list players */}
 
               <div className="h-60 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs ">
-                {players1?.map((p) => (
-                      
-                  <div key={p.length} className="max-w-xs rounded shadow-lg ">
-                    <div className="py-4 ">
-                      <div className="font-bold text-xs mb-2 truncate ... indent-2 ">{p}</div>
-                    </div>
-                  </div>
-
-                ))}
-              </div>
-            </div>
-            
-            <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20 ">
-
-                {/* title */}
-              <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players2.length} Address in Lottery {lotteryId2}2 Balance of {amountLottery2}
-                
-              </p>
-
-                {/* list players */}
-
-              <div className="h-60 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs ">
-                {players2?.map((p) => (
-                      
-                  <div key={p.length} className="max-w-xs rounded shadow-lg ">
-                    <div className="py-4 ">
-                      <div className="font-bold text-xs mb-2 truncate ... indent-2 ">{p}</div>
-                    </div>
-                  </div>
-
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20 ">
-
-                {/* title */}
-              <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
-              {players3.length} Address in Lottery {lotteryId3}3 Balance of {amountLottery3}
-                
-              </p>
-
-                {/* list players */}
-
-              <div className="h-60 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs ">
-                {players3?.map((p) => (
+                {players?.map((p) => (
                       
                   <div key={p.length} className="max-w-xs rounded shadow-lg ">
                     <div className="py-4 ">
@@ -273,7 +123,7 @@ return !contract1 ? null : (
 
               <div className="h-10 overflow-y-auto ... lg:py-1 max-w-xs ">
                 {
-                  lotteryHistory1.map(item => {
+                  lotteryHistory.map(item => {
                     if (item.address !== null) {
                       return (
                         <>
