@@ -5,6 +5,7 @@ const ListLastWinners = ({contracts, lotteryId}) => {
 
   const contract = useLottery(contracts);
   const [lotteryHistory, setLotteryHistory] = useState([]);
+  const [idLottery, setIdLottery] = useState()
 
   useEffect(() => {
     updateState()
@@ -24,7 +25,7 @@ const ListLastWinners = ({contracts, lotteryId}) => {
 
   const getLotteryId = async () => {
       const lotteryId = await contract.methods.getLotteryId().call()
-      // setLotteryId(lotteryId)
+      // setIdLottery(lotteryId)
       await getHistory(lotteryId)
   }
   
