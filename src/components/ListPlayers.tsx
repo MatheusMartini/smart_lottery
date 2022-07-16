@@ -8,6 +8,8 @@ const ListPlayers = ({contracts, lotteryId}) => {
   const contract = useLottery(contracts);
   const [players, setPlayers] = useState([]);
   const [amountLottery, setAmountLottery] = useState([]);
+  const [participating, setParticipating] = useState([]);
+  const {account } = useWeb3React();
 
   useEffect(() => {
     updateState()
@@ -15,7 +17,8 @@ const ListPlayers = ({contracts, lotteryId}) => {
 
   const updateState = () => {
     if (contract) getPlayersLottery(); 
-    if (contract) getAmount(); 
+    if (contract) getAmount();
+    if (contract) verifyParticipating(players); 
   }
 
   const getPlayersLottery = async () => {
@@ -29,10 +32,19 @@ const ListPlayers = ({contracts, lotteryId}) => {
     setAmountLottery([a]);
   }
 
+  const verifyParticipating = (players) => {
+    var count = 0;
+    players.map(item => {
+      if (item == account) {
+        count++
+        setParticipating([count])
+      }
+    }
+    )
+  }
 return !contract ? null : (
     <>    
       <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20 ">
-
         <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
           {players.length} Address in Lottery {lotteryId} Balance of {amountLottery}
         </p>
@@ -45,7 +57,15 @@ return !contract ? null : (
                 </div>
             </div>
           ))}
+          
         </div>
+          {
+            players.length && participating.length ?
+              <div className="history-entry mt-2">
+                <p>You participated {participating} times</p> 
+                <p>Wait for the draw!</p>
+              </div>
+          : "To participate in the draw use the lottery above :)"}  
       </div>
     </>
   );
