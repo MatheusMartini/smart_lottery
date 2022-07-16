@@ -60,7 +60,7 @@ const Lotteries = () => {
                     {/* descrições da loteria */}
                   <ul className="flex flex-col list-inside pl-6 xl:pl-0 text-center text-black-500 flex-grow">
                     <li className="relative check custom-list my-2">
-                      Buy a ticket and win the prize of: amount contract
+                      Buy a ticket to participate in the lottery
                     </li>
                   </ul>
                     {/* botão para chamar contrato */}
@@ -89,7 +89,7 @@ const Lotteries = () => {
                     {/* descrições da loteria */}
                   <ul className="flex flex-col list-inside pl-6 xl:pl-0 text-center text-black-500 flex-grow">
                     <li className="relative check custom-list my-2">
-                      Buy a ticket and win the prize of: amount contract
+                      Buy a ticket to participate in the lottery
                     </li>
                   </ul>
                     {/* botão para chamar contrato */}
@@ -118,7 +118,7 @@ const Lotteries = () => {
                     {/* descrições da loteria */}
                   <ul className="flex flex-col list-inside pl-6 xl:pl-0 text-center text-black-500 flex-grow">
                     <li className="relative check custom-list my-2">
-                      Buy a ticket and win the prize of: amount contract
+                      Buy a ticket to participate in the lottery
                     </li>
                   </ul>
                     {/* botão para chamar contrato */}
