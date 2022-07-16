@@ -15,7 +15,7 @@ const About = ({
     },
     {
       name: "Players",
-      title: "Loading...",
+      title: "For Everyone",
       icon: "/assets/Icon/heroicons_sm-user.svg",
     },
   ],
