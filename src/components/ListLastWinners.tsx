@@ -26,7 +26,7 @@ const ListLastWinners = ({contracts, lotteryId}) => {
   const getLotteryId = async () => {
       const lotteryId = await contract.methods.getLotteryId().call()
       // setIdLottery(lotteryId)
-      await getHistory(lotteryId)
+      getHistory(lotteryId)
   }
   
 return !contract ? null : (
