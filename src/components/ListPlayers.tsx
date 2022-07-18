@@ -44,12 +44,12 @@ const ListPlayers = ({contracts, lotteryId}) => {
   }
 return !contract ? null : (
     <>    
-      <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 xl:px-20 ">
+      <div className="flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6  ">
         <p className=" text-black-600 font-medium capitalize my-2 sm:my-7 ">
           {players.length} Address in Lottery {lotteryId} Balance of {amountLottery}
         </p>
 
-        <div className="h-60 overflow-y-auto ... lg:py-1 lg:px-4 max-w-xs "> 
+        <div className="h-60 overflow-y-auto ...  "> 
           {players?.map((p) => (    
             <div key={p.length} className="max-w-xs rounded shadow-lg ">
                 <div className="py-4 ">

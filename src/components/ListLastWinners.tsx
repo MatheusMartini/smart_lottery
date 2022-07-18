@@ -31,7 +31,7 @@ const ListLastWinners = ({contracts, lotteryId}) => {
   
 return !contract ? null : (
     <>    
-        <div className="flex flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 ">
+        <div className="flex-col justify-center items-center border-2 border-gray-500 rounded-xl py-4 px-6 lg:px-12 ">
 
             {/* title */}
             <p className="text-black-600 font-medium capitalize my-2 sm:my-7 ">
@@ -55,7 +55,7 @@ return !contract ? null : (
                     )
                 }else{
                   return(
-                      <p>Still no Winners this one</p>
+                      <p>No Winners yet</p>
                     )
                   }
                 }
