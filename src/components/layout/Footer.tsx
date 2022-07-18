@@ -49,8 +49,18 @@ import github from '../../../public/assets/Icon/github.svg';
             <p className="text-black-600 mb-4 font-medium text-lg">Bsc Scan</p>
             <ul className="text-black-500">            
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-                <a href="https://testnet.bscscan.com/address/0x3b2B29d80dC22E1a4B7b12d94b093c2312D04b92" target="_blank">
-                  Contract TestNet
+                <a href="https://testnet.bscscan.com/address/0x8500367cdd0730BE8A2A305239A2cBB40b4b8549" target="_blank">
+                  Contract Lottery 1
+                </a>
+              </li>
+              <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
+                <a href="https://testnet.bscscan.com/address/0x5d6dB8D5c7fE61b53Ed02Dc0dEE5a66f751dc5A5" target="_blank">
+                  Contract Lottery 2
+                </a>
+              </li>
+              <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
+                <a href="https://testnet.bscscan.com/address/0x5B76090a3637f343A7c30719f642a3f37e49c586" target="_blank">
+                  Contract Lottery 3
                 </a>
               </li>
               {/* <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
@@ -68,7 +78,9 @@ import github from '../../../public/assets/Icon/github.svg';
             <p className="text-black-600 mb-4 font-medium text-lg">Donations</p>
             <ul className="text-black-500">
               <li className="my-2 hover:text-orange-500 cursor-pointer transition-all">
-                Coming soon...
+              <a href="https://www.buymeacoffee.com/MartiniMatheus" target="_blank">
+                  Buy me a coffee :)
+                </a>
               </li>
             </ul>
           </div>
