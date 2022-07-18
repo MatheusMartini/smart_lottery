@@ -37,6 +37,7 @@ const Guide = ({
                     <h3 className='my-4 text-xl font-semibold'>Install Plugins MetaMask</h3>
                     <a href="https://www.youtube.com/watch?v=yWfZnjkhhhg" target="blank"><p className='mx-auto items-center justify-center text-blue-500'>1- Tutorial Metamask English Youtube</p></a>
                     <a href="https://www.youtube.com/watch?v=INXklQQ-TC0" target="blank"><p className='mx-auto items-center justify-center text-blue-500'>2- Tutorial Metamask Portugues Youtube</p></a>
+                    <a href="https://metamask.io/" target="blank"><p className='mx-auto items-center justify-center text-blue-500'>3- MetaMask.io</p></a>
                   </div>
                 </li>
             </ul>
